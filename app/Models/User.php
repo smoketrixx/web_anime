@@ -17,10 +17,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'avatar',
+        'status',
+        'firstname',
+        'lastname',
+        'banner'
     ];
 
     /**
@@ -32,6 +42,35 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function completedAnimes()
+    {
+        return $this->belongsToMany(Anime::class, 'users_anime_completed')
+            ->withTimestamps();
+    }
+
+    public function droppedAnimes()
+    {
+        return $this->belongsToMany(Anime::class, 'users_anime_dropped')
+            ->withTimestamps();
+    }
+
+    public function plannedAnimes()
+    {
+        return $this->belongsToMany(Anime::class, 'users_anime_planned')
+            ->withTimestamps();
+    }
+
+    public function watchingAnimes()
+    {
+        return $this->belongsToMany(Anime::class, 'users_anime_watching')
+            ->withTimestamps();
+    }
 
     /**
      * Get the attributes that should be cast.
