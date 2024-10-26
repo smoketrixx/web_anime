@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('original_source_id')->nullable()->constrained();
             $table->date('issue_date')->nullable();
             $table->foreignId('mpaa_rating_id')->nullable()->constrained('mpaa_ratings');
+            $table->foreignId('studio_id')->nullable()->constrained('studios');
             $table->timestamps();
         });
     }

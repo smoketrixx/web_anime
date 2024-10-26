@@ -6,18 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Studio extends Model
+class AnimeGenre extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name',
-        'description',
-        'avatar'
+        'anime_id',
+        'genre_id',
     ];
-
-    public function anime()
-    {
-        return $this->hasMany(Anime::class);
-    }
-
 }

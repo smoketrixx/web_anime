@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anime_studio', function (Blueprint $table) {
-            $table->foreignId('studio_id')->constrained();
+        Schema::create('anime_genres', function (Blueprint $table) {
+            $table->foreignId('genre_id')->constrained();
             $table->foreignId('anime_id')->constrained();
-            $table->primary(['studio_id', 'anime_id']);
+            $table->primary(['genre_id', 'anime_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('anime_studio');
+        Schema::dropIfExists('anime_genres');
     }
 };

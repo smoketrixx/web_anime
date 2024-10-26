@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Anime extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'russian_name',
         'original_name',
@@ -18,7 +20,8 @@ class Anime extends Model
         'status_id',
         'original_source_id',
         'issue_date',
-        'mpaa_rating_id'
+        'mpaa_rating_id',
+        'studio_id'
     ];
 
     protected $casts = [
@@ -41,10 +44,11 @@ class Anime extends Model
         return $this->belongsTo(MpaaRating::class);
     }
 
-    public function studios()
+    public function studio()
     {
-        return $this->belongsToMany(Studio::class, 'anime_studio');
+        return $this->belongsTo(Studio::class);
     }
+
 
     public function comments()
     {
