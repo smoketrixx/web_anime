@@ -44,7 +44,7 @@ class Anime extends Model
         return $this->belongsTo(MpaaRating::class);
     }
 
-    public function studio()
+    public function studios()
     {
         return $this->belongsTo(Studio::class);
     }
